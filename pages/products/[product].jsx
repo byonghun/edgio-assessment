@@ -31,7 +31,7 @@ export const getStaticPaths = async () => {
     const url = generateUrl({ limit: 10 })
     const resp = await fetch(url)
     const products = await resp.json()
-    const paths = products.map(product => {
+    const paths = (products || []).map(product => {
       return ({
         params: { product: product.id.toString() }
       })
